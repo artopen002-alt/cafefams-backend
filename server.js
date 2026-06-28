@@ -1251,7 +1251,7 @@ app.get('/api/admin/activity', requireAdmin, (req, res) => {
 
 // ─── CUSTOMER: Request human assistant ───────────────────
 // index.html chatbot থেকে call হয় — no auth needed
-app.post('/api/assist-request', (req, res) => {
+app.post('/api/assist-request', async (req, res) => {
   const { tableNumber, guestName, guestPhone, guestCount, message, sessionId } = req.body;
   if (!tableNumber) return res.status(400).json({ error: 'tableNumber required' });
 
