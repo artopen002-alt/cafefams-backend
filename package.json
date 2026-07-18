@@ -1,0 +1,23 @@
+{
+  "name": "cafefams-backend",
+  "version": "1.5.3",
+  "description": "Café Fams AI Chatbot Backend — v1.5.3: Plan B Step 1 — per-restaurant Razorpay payment credentials. /api/payment/create, /verify, and /webhook now resolve key_id/key_secret/webhook_secret from the restaurants table (with a per-field env-var fallback for 'cafefams' only), so a future second restaurant's payments can never be misdirected into Café Fams's own Razorpay account; requires running migration.sql. v1.5.2: adds a system-prompt rule preventing the AI from re-confirming (and duplicating) an order when a customer just wants to view their existing bill — paired with a frontend fix that stops the 'My Bill' button from ever reaching the AI at all. v1.5.1: IPv6/pooler connection diagnostics. v1.5.0: fixed silent data-loss bug (RLS policies blocked all Supabase writes), boot-time DB write self-test + Telegram alerting. v1.4.0: multi-tenant resolver, payment/price integrity, rate limiting, prompt-injection guardrails, memory/SSE fixes",
+  "main": "server.js",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "cors": "2.8.5",
+    "node-fetch": "2.6.9",
+    "dotenv": "16.3.1",
+    "razorpay": "2.9.2",
+    "uuid": "9.0.0",
+    "googleapis": "140.0.0",
+    "pg": "8.11.3",
+    "express-rate-limit": "7.4.1"
+  }
+}
